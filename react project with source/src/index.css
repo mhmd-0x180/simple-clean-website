@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+
+
+:root {
+
+  --color-accent: #c3a7ff;
+  /* Neon green accent for highlights */
+
+  --background: #080808;
+  /* Deeper charcoal/near black */
+  --surface: #1d1d1d;
+  /* Slightly lighter surface for cards */
+  --border: #444444;
+  /* Subtle border color */
+
+  --text-primary: #f0f0f0;
+  /* Brighter clean white */
+  --text-secondary: #b0b0b0;
+  /* Lighter gray for secondary text */
+
+  --color-accent-light: #c6acff;
+  --background-light: #eeeeee;
+  --surface-light: #ccced3;
+  --border-light: #a0a0a0;
+
+  --text-primary-light: #000000;
+  --text-secondary-light: #303030;
+
+  --border-glow-color: #ffffff;
+}
+
+:root {}
+
+.dark {
+  --border-glow-color: var(--color-accent);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent: var(--color-accent);
+
+
+  --color-accent-light: var(--color-accent-light);
+  --color-background-light: var(--background-light);
+  --color-surface-light: var(--surface-light);
+  --color-border-light: var(--border-light);
+
+  --color-text-primary-light: var(--text-primary-light);
+  --color-text-secondary-light: var(--text-secondary-light);
+
+
+
+}
+
+@layer utilities {
+  .text-color-primary {
+    @apply text-text-primary-light dark:text-text-primary transition-colors duration-300;
+  }
+
+  .text-color-secondary {
+    @apply text-text-secondary-light dark:text-text-secondary transition-colors duration-300;
+  }
+}
+
+.dark .dark-logo-filter {
+  filter: invert(100%) hue-rotate(180deg);
+  transition: all 300ms ease-in-out;
+}
+
+
+.title-font {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+  font-style: italic;
+}
+
+.impact-font {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.mouse-driven-border {
+  position: relative;
+}
+
+.mouse-driven-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 0.23rem;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--border-glow-color), transparent 50%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 200ms ease-in-out;
+}
+
+.mouse-driven-border:hover::before {
+  opacity: 1;
+}
+
+
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Tajawal', 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+}
+
+.body-no-scroll {
+  overflow: hidden;
+}
