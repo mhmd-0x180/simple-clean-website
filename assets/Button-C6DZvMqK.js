@@ -1,0 +1,2 @@
+import{j as e}from"./index-dVHQdToM.js";const n=({children:t,onClick:o,className:r})=>e.jsx("button",{onClick:o,className:`cursor-pointer text-white bg-gradient-to-br from-accent to-purple-500 dark:to-purple-700/90 hover:bg-opacity-90  
+                font-bold py-2 px-5 border-2 border-accent rounded-full text-lg transition duration-300 ease-in-out transform  active:scale-98 shadow-lg ${r}`,children:t});export{n as B};
